@@ -34,32 +34,32 @@ class Client
 
 	public function identify(array $message)
 	{
-		return $this->consumer->identify($this->addContext($message, self::DEF_IDENTIFY_TYPE, self::DEF_IDENTIFY_KEY));
+		return $this->consumer->log($this->addContext($message, self::DEF_IDENTIFY_TYPE, self::DEF_IDENTIFY_KEY));
 	}
 
 	public function track(array $message)
 	{
-		return $this->consumer->track($this->addContext($message, self::DEF_TRACK_TYPE, self::DEF_TRACK_KEY));
+		return $this->consumer->log($this->addContext($message, self::DEF_TRACK_TYPE, self::DEF_TRACK_KEY));
 	}
 
 	public function group(array $message)
 	{
-		return $this->consumer->group($this->addContext($message, self::DEF_GROUP_TYPE, self::DEF_GROUP_KEY));
+		return $this->consumer->log($this->addContext($message, self::DEF_GROUP_TYPE, self::DEF_GROUP_KEY));
 	}
 
 	public function page(array $message)
 	{
-		return $this->consumer->page($this->addContext($message, self::DEF_PAGE_TYPE, self::DEF_PAGE_KEY));
+		return $this->consumer->log($this->addContext($message, self::DEF_PAGE_TYPE, self::DEF_PAGE_KEY));
 	}
 
 	public function screen(array $message)
 	{
-		return $this->consumer->screen($this->addContext($message, self::DEF_SCREEN_TYPE, self::DEF_SCREEN_KEY));
+		return $this->consumer->log($this->addContext($message, self::DEF_SCREEN_TYPE, self::DEF_SCREEN_KEY));
 	}
 
 	public function alias(array $message)
 	{
-		return $this->consumer->alias($this->addContext($message, self::DEF_ALIAS, self::DEF_ALIAS));
+		return $this->consumer->log($this->addContext($message, self::DEF_ALIAS, self::DEF_ALIAS));
 	}
 
 	/**

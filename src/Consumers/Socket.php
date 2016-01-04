@@ -22,19 +22,13 @@ class Socket implements Consumer
 		$this->options = array_merge($this->options, $options);
 	}
 
-
 	/**
 	 * Tags traits about the user.
 	 *
 	 * @param  array $message
 	 * @return boolean whether the identify call succeeded
 	 */
-	public function identify(array $message)
-	{
-		$this->send($message);
-	}
-
-	private function send(array $message)
+	public function log(array $message)
 	{
 		$socket = $this->createSocket();
 		if (!$socket)
@@ -178,24 +172,23 @@ class Socket implements Consumer
 	}
 
 	/**
-   * Parse our response from the server, check header and body.
-   * @param  string $res
-   * @return array
-   *     string $status  HTTP code, e.g. "200"
-   *     string $message JSON response from the api
-   */
-  private function parseResponse($res) {
+	 * Parse our response from the server, check header and body.
+	 * @param  string $res
+	 * @return array
+	 *     string $status  HTTP code, e.g. "200"
+	 *     string $message JSON response from the api
+	 */
+	private function parseResponse($res)
+	{
+		$contents = explode("\n", $res);
+		# Response comes back as HTTP/1.1 200 OK
+		# Final line contains HTTP response.
+		$status = explode(" ", $contents[0], 3);
+		$result = $contents[count($contents) - 1];
 
-    $contents = explode("\n", $res);
-
-    # Response comes back as HTTP/1.1 200 OK
-    # Final line contains HTTP response.
-    $status = explode(" ", $contents[0], 3);
-    $result = $contents[count($contents) - 1];
-
-    return array(
-      "status"  => isset($status[1]) ? $status[1] : null,
-      "message" => $result
-    );
-  }
+		return array(
+			"status"  => isset($status[1]) ? $status[1] : null,
+			"message" => $result
+		);
+	}
 }
