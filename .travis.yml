@@ -1,14 +1,18 @@
 language: php
 php:
   - 5.6
-  - 5.5
-  - 5.4
-  - 5.3
-  - hhvm
   - 7.0
+  - hhvm
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
 
 matrix:
   allow_failures:
     - php: hhvm
+  fast_finish: true
 
-script: phpunit --colors
+sudo: false
+
+script: php vendor/bin/phpunit
