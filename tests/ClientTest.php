@@ -56,6 +56,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 
 	/** @var \Mockery\MockInterface|Segment\Consumer */
 	private $consumer;
+
 	/** @var Client */
 	private $client;
 
@@ -80,7 +81,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_IDENTIFY['name']
+				'type' => Client::DEF_IDENTIFY_TYPE
 			]
 		)))->once();
 
@@ -111,7 +112,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_TRACK['name']
+				'type' => Client::DEF_TRACK_TYPE
 			]
 		)))->once();
 
@@ -142,7 +143,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_GROUP['name']
+				'type' => Client::DEF_GROUP_TYPE
 			]
 		)))->once();
 
@@ -173,7 +174,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_PAGE['name']
+				'type' => Client::DEF_PAGE_TYPE
 			]
 		)))->once();
 
@@ -207,7 +208,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_PAGE['name']
+				'type' => Client::DEF_PAGE_TYPE
 			]
 		)))->once();
 
@@ -238,7 +239,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_SCREEN['name']
+				'type' => Client::DEF_SCREEN_TYPE
 			]
 		)))->once();
 
@@ -269,7 +270,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 						'version' => Client::VERSION
 					]
 				],
-				'type' => Client::DEF_ALIAS['name']
+				'type' => Client::DEF_ALIAS
 			]
 		)))->once();
 

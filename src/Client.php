@@ -5,14 +5,18 @@ use Ramsey\Uuid\Uuid;
 
 class Client
 {
-	const VERSION = '1.1.3';
-
-	const DEF_IDENTIFY = ['name' => 'identify', 'key' => 'traits'];
-	const DEF_TRACK = ['name' => 'track', 'key' => 'properties'];
-	const DEF_GROUP = ['name' => 'group', 'key' => 'traits'];
-	const DEF_PAGE = ['name' => 'page', 'key' => 'properties'];
-	const DEF_SCREEN = ['name' => 'screen', 'key' => 'properties'];
-	const DEF_ALIAS = ['name' => 'alias', 'key' => 'alias'];
+	const VERSION           = '1.1.3';
+	const DEF_IDENTIFY_TYPE = 'identify';
+	const DEF_IDENTIFY_KEY  = 'traits';
+	const DEF_TRACK_TYPE    = 'track';
+	const DEF_TRACK_KEY     = 'properties';
+	const DEF_GROUP_TYPE    = 'group';
+	const DEF_GROUP_KEY     = 'traits';
+	const DEF_PAGE_TYPE     = 'page';
+	const DEF_PAGE_KEY      = 'properties';
+	const DEF_SCREEN_TYPE   = 'screen';
+	const DEF_SCREEN_KEY    = 'properties';
+	const DEF_ALIAS         = 'alias';
 
 	/**
 	 * @var Consumer
@@ -30,32 +34,32 @@ class Client
 
 	public function identify(array $message)
 	{
-		return $this->consumer->identify($this->addContext($message, self::DEF_IDENTIFY['name'], self::DEF_IDENTIFY['key']));
+		return $this->consumer->identify($this->addContext($message, self::DEF_IDENTIFY_TYPE, self::DEF_IDENTIFY_KEY));
 	}
 
 	public function track(array $message)
 	{
-		return $this->consumer->track($this->addContext($message, self::DEF_TRACK['name'], self::DEF_TRACK['key']));
+		return $this->consumer->track($this->addContext($message, self::DEF_TRACK_TYPE, self::DEF_TRACK_KEY));
 	}
 
 	public function group(array $message)
 	{
-		return $this->consumer->group($this->addContext($message, self::DEF_GROUP['name'], self::DEF_GROUP['key']));
+		return $this->consumer->group($this->addContext($message, self::DEF_GROUP_TYPE, self::DEF_GROUP_KEY));
 	}
 
 	public function page(array $message)
 	{
-		return $this->consumer->page($this->addContext($message, self::DEF_PAGE['name'], self::DEF_PAGE['key']));
+		return $this->consumer->page($this->addContext($message, self::DEF_PAGE_TYPE, self::DEF_PAGE_KEY));
 	}
 
 	public function screen(array $message)
 	{
-		return $this->consumer->screen($this->addContext($message, self::DEF_SCREEN['name'], self::DEF_SCREEN['key']));
+		return $this->consumer->screen($this->addContext($message, self::DEF_SCREEN_TYPE, self::DEF_SCREEN_KEY));
 	}
 
 	public function alias(array $message)
 	{
-		return $this->consumer->alias($this->addContext($message, self::DEF_ALIAS['name'], self::DEF_ALIAS['key']));
+		return $this->consumer->alias($this->addContext($message, self::DEF_ALIAS, self::DEF_ALIAS));
 	}
 
 	/**
@@ -72,7 +76,7 @@ class Client
 		{
 			$msg[$key] = new \stdClass();
 		}
-		elseif($key == self::DEF_ALIAS['key'])
+		elseif($key == self::DEF_ALIAS)
 		{
 			$msg[$key] = new \stdClass();
 		}
