@@ -1,7 +1,7 @@
 analytics-php
 ==============
 
-[![Build Status](https://travis-ci.org/segmentio/analytics-php.png?branch=master)](https://travis-ci.org/segmentio/analytics-php)
+[![Build Status](https://travis-ci.org/digbang/segment.png?branch=v2)](https://travis-ci.org/digbang/segment)
 
 analytics-php is a php client for [Segment](https://segment.com)
 
